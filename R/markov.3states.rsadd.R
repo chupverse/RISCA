@@ -228,7 +228,7 @@ if (is.na(min(p.sex)))
 		
 if(!is.numeric(p.year))
  {stop("Argument 'p.year' must be a numeric vector")} 
-if(as.numeric(mdy.date(as.numeric(substr(Sys.Date(),6,7)),as.numeric(substr(Sys.Date(),9,10)),as.numeric(substr(Sys.Date(),1,4)))-max(p.year,na.rm=T))<0)
+if(as.numeric(Sys.Date()- as.Date(max(p.year)))<0)
  {stop("Some dates are greater than current date: check that 'p.year' is a date format (number of days since 01.01.1960)")}
 if (is.na(min(p.year)))
 		warning("individuals with missing values on 'p.year' will be removed from the analysis \n")
@@ -444,7 +444,7 @@ if (is.null(weights)) {w <- rep(1, length(d1))} else {w <- weights}
 h3P<-function(rate.table,age,sex,year,t){
 age.year<-age/365.24
 t.year<-t/365.24
-year.year<-(date.mdy(year))$year
+year.year<- as.numeric( format(as.Date(year, origin = "1960-01-01"), "%Y"))
 maxyear.ratetable<-max(as.numeric(attributes(rate.table)$dimnames[[3]]))
 minage.year.ratetable<-round(min(as.numeric(attributes(rate.table)$dimnames[[1]])/365.24))
 return(mapply(FUN=function(age,sex,year) {rate.table[age,sex,year]},trunc(trunc(age.year)+t.year)-minage.year.ratetable+1,sex,as.character(pmin(maxyear.ratetable,trunc(year.year+t.year)))))
