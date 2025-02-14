@@ -225,7 +225,7 @@ if (is.na(min(p.sex)))
 		
 if(!is.numeric(p.year))
  {stop("Argument 'p.year' must be a numeric vector")} 
-if(as.numeric(Sys.Date()- as.Date(max(p.year)))<0)
+if(as.numeric(Sys.Date()- as.Date(max(p.year), origin = "1960-01-01"))<0)
  {stop("Some entry dates in the study are greater than current date: check that 'p.year' is a date format (number of days since 01.01.1960)")}
 if (is.na(min(p.year)))
 		warning("individuals with missing values for 'p.year' will be removed \n")
