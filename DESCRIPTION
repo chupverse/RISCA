@@ -3,7 +3,7 @@ Type: Package
 Title: Causal Inference and Prediction in Cohort-Based Analyses
 Version: 1.0.5
 Depends: R (>= 4.0.0), splines, survival, relsurv, reticulate, tune
-Imports: date, graphics, nlme, MASS, mvtnorm, statmod, parallel,
+Imports: graphics, nlme, MASS, mvtnorm, statmod, parallel,
         doParallel, foreach, nnet, kernlab, glmnet, caret,
         SuperLearner, rpart, mosaic, cubature
 Authors@R: c(
